@@ -5,23 +5,37 @@ description: Design a lightweight FSD-inspired frontend architecture using app, 
 
 # Simple FSD Architect
 
-Use Simple FSD to make assignment code readable, not to create empty layers. Start page-local and promote code only when a real boundary appears.
+Use Simple FSD to make assignment code readable, not to create empty layers. In Next.js App Router projects, `app/` is routing only and the real page component lives in the FSD pages layer, implemented as `views/` by default.
 
 ## Default layers
 
 `app/`
 
-- Next.js route entries
+- Next.js folder routing only
+- route shell files that delegate to `views/`
 - layout
 - providers
 - global styles
 - query client setup
 
-`pages/` or `views/`
+`views/`
 
 - page-level composition
 - route-level screen composition
 - orchestration between widgets
+- page-level React Query hydration boundaries when useful
+
+Preferred App Router shell:
+
+```tsx
+import { HomePage } from "@/views/home/HomePage";
+
+export default function Page() {
+  return <HomePage />;
+}
+```
+
+Use `views/` as the default name for the FSD pages layer in Next.js App Router projects. Use `pages/` only when the project already chose that convention and it will not be confused with Next's Pages Router.
 
 `widgets/`
 
@@ -32,22 +46,23 @@ Use Simple FSD to make assignment code readable, not to create empty layers. Sta
 
 `entities/`
 
-- domain types
-- pure API functions
-- React Query hooks
-- query keys
-- mappers
-- business rules
+- domain API modules only
+- domain-specific pure API functions
+- domain-specific React Query hooks
+- domain-specific query option factories and query keys
+- API response types and domain types directly tied to that API
+- mappers directly tied to that API response
 - examples: `order`, `product`, `payment`, `store`, `customer`
 
 `shared/`
 
 - shared UI primitives
-- utilities
+- common utilities
 - common hooks
-- base API client
-- formatters
-- constants
+- common API client and fetchers
+- common query helpers
+- common formatters
+- constants and config
 
 ## Rules
 
@@ -56,20 +71,41 @@ Use Simple FSD to make assignment code readable, not to create empty layers. Sta
 - Prefer page-local code first.
 - Promote code to widgets/entities/shared only when a real boundary appears.
 - Keep the architecture readable for assignment reviewers.
+- Do not put real page composition, data orchestration, or widget wiring in `app/page.tsx`; keep it in `views/{route}/{RoutePage}.tsx`.
+- Let `app/` own only route folders, metadata/layout when needed, and thin `Page` exports.
+- Plan React Query hydration at the `views/` boundary when many child widgets need the same server-prefetched domain data.
+- Never put common code in `entities/`.
+- Move generic utilities to `shared/util`.
+- Move common API clients and fetchers to `shared/api`.
+- Move common query helpers to `shared/api` or `shared/lib` depending on the project convention.
+- Move shared UI to `shared/ui`.
+- Move common config and constants to `shared/config` or `shared/constants`.
+
+## Hydration-aware structure
+
+When React Query is useful, prefer this flow:
+
+1. Domain-specific pure API functions and query options live in `entities/`.
+2. A server component in `views/` creates a query client and prefetches important queries.
+3. `HydrationBoundary` wraps the view section that needs client-side hooks.
+4. Client widgets call entity hooks where the data is needed.
+
+This keeps the benefit of "data can be used where it is needed" without duplicating fetch logic across components.
 
 ## Output format
 
 ### 1. Proposed folder structure
 
 Show the exact initial structure. Include only useful folders and files.
+For Next.js App Router, show `app/` route shells and `views/` page components separately.
 
 ### 2. App layer responsibilities
 
-State what belongs in `app/`.
+State what belongs in `app/`: folder routing, layouts, providers, global setup, metadata, and thin route shell components only.
 
 ### 3. Pages/views layer responsibilities
 
-State what composes screens and connects widgets.
+State what composes screens and connects widgets. In App Router projects, default to `views/` and include the `app/page.tsx -> views/*Page` delegation pattern.
 
 ### 4. Widgets layer responsibilities
 
@@ -77,11 +113,12 @@ List widgets that represent meaningful product sections.
 
 ### 5. Entities layer responsibilities
 
-Map each domain to types, API, query keys, mappers, and rules.
+Map each domain to API-specific types, pure API functions, query option factories, hooks, query keys, and API response mappers.
+Explicitly reject common utilities, common fetchers, common mappers, shared query helpers, shared UI, and global constants from `entities/`.
 
 ### 6. Shared layer responsibilities
 
-List shared UI, utilities, API client, constants, and config.
+List shared UI, common utilities, API client/fetchers, common query helpers, formatters, constants, and config.
 
 ### 7. What should stay page-local
 

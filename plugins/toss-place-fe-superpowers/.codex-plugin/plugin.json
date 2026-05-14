@@ -1,10 +1,12 @@
 {
   "name": "toss-place-fe-superpowers",
   "version": "0.1.0",
-  "description": "A frontend assignment workflow kit for Toss Place style take-home assignments. It helps with requirement analysis, stack selection, Next.js RSC architecture, Simple FSD structure, API layer design, re-render-aware component boundaries, reliability review, and final submission polish.",
+  "description": "A frontend assignment workflow kit for Toss Place style take-home assignments. It helps with planning feedback loops, product-focused assignment strategy, requirement analysis, assumptions, trade-offs, README planning, stack selection, cache-efficient Next.js RSC architecture, Simple FSD, API design, component boundaries, React performance review, parallel agent orchestration, review-fix loops, feature-sized commits, git delivery, reliability review, and final polish.",
   "author": {
-    "name": "Manwook Han"
+    "name": "Manwook Han",
+    "url": "https://github.com/manNomi"
   },
+  "repository": "https://github.com/manNomi/next-fsd-plugin",
   "license": "MIT",
   "keywords": [
     "frontend",
@@ -18,13 +20,36 @@
     "reliability",
     "toss-place",
     "take-home",
-    "architecture"
+    "architecture",
+    "parallel-agents",
+    "subagents",
+    "orchestration",
+    "review-fix-loop",
+    "planning",
+    "feedback-loop",
+    "architecture-planning",
+    "next-cache",
+    "isr",
+    "revalidation",
+    "performance",
+    "react-best-practices",
+    "vercel",
+    "git",
+    "commit",
+    "pull-request",
+    "feature-commits",
+    "delivery-agent",
+    "product-assignment",
+    "assumptions",
+    "trade-offs",
+    "codebase-adaptation",
+    "readme"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Toss Place FE Superpowers",
     "shortDescription": "Frontend take-home workflows for Toss Place style reliability and architecture",
-    "longDescription": "A Codex-first skill pack for frontend take-home assignments, especially Toss Place and offline-commerce-like products. It guides requirement analysis, stack selection, Next.js RSC and caching architecture, Simple FSD structure, API layer design, re-render-aware component boundaries, reliability review, offline edge-case checks, and final submission polish.",
+    "longDescription": "A Codex-first skill pack for frontend take-home assignments, especially Toss Place and offline-commerce-like products. It guides planning feedback loops, product-focused assignment strategy, requirement analysis, assumptions, trade-offs, README planning, stack selection, cache-efficient Next.js RSC architecture, Simple FSD structure, API layer design, re-render-aware component boundaries, React performance best practices, Codex subagent orchestration, review-fix loops, feature-sized commits, git delivery, reliability review, offline edge-case checks, and final submission polish.",
     "developerName": "Manwook Han",
     "category": "Coding",
     "capabilities": [
@@ -33,7 +58,9 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Use this plugin when preparing or executing a frontend take-home assignment, especially for Toss Place or offline-commerce-like products. Start with assignment analysis, then choose the stack, design architecture, plan API and component boundaries, implement carefully, review reliability risks, and polish the final submission."
+      "Plan a product-focused assignment.",
+      "Review React performance best practices.",
+      "Commit feature slices and open a PR."
     ],
     "brandColor": "#0064FF",
     "screenshots": []

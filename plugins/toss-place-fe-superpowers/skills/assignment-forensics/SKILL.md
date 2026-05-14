@@ -14,9 +14,11 @@ Do not write code, scaffold a project, install dependencies, or create files dur
 ## What to inspect
 
 - Original assignment text, rubric, API docs, design files, screenshots, and README.
+- All page screenshots and Figma/design references when available.
 - Required user flows, data fields, validation rules, and submission rules.
 - Product context: offline store use, POS/kiosk/table order/payment/order/dashboard behavior.
 - Evaluation signals: reliability, maintainability, edge cases, code organization, README clarity.
+- Setup implications from design comparison: routes, page states, responsive requirements, styling system, assets, and verification screenshots.
 
 ## Output format
 
@@ -65,6 +67,7 @@ Only include items that are genuinely optional. Do not let optional work block c
 ### 9. 구현 체크리스트
 
 Create a practical checklist that can guide implementation. Include data, UI states, state transitions, API handling, tests, and README tasks.
+Include a screenshot/Figma comparison checklist when visual references exist.
 
 ### 10. 제출 체크리스트
 

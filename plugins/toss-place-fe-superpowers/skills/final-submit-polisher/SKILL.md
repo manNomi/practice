@@ -20,7 +20,11 @@ Use this after implementation and review, before submitting a frontend assignmen
 - known limitations
 - folder structure explanation
 - API/cache/state strategy explanation
+- static rendering, `revalidate`, ISR, tag/path revalidation, and `no-store` decisions
+- React Query hydration and `staleTime` explanation when used
+- FSD `entities/` vs `shared/` boundary explanation
 - final changed files
+- feature-sized commit grouping
 - unnecessary code
 - console logs
 - unused dependencies
@@ -47,6 +51,8 @@ Summarize what was built in reviewer-friendly language.
 ### 5. Key decisions
 
 List stack, architecture, API, cache, state, and component boundary decisions.
+For Next.js, explicitly include which routes/data are static, revalidated, tag/path invalidated, always fresh with `no-store`, or hydrated into React Query.
+For FSD, explicitly state that `entities/` contains only domain API-adjacent code and common code lives in `shared/`.
 
 ### 6. Trade-offs
 
@@ -58,8 +64,10 @@ List limitations honestly. Do not invent future work to hide unfinished basics.
 
 ### 8. Cleanup checklist
 
-List concrete cleanup tasks: logs, unused files, unused dependencies, formatting, dead code, TODOs, and final diff scan.
+List concrete cleanup tasks: logs, unused files, unused dependencies, formatting, dead code, TODOs, final diff scan, and feature-sized commit groups.
 
 ### 9. Final message draft
 
 Draft a concise submission message with verification evidence and README pointer.
+
+If the user asks for commit, push, or PR creation, hand the verified commit groups to `$toss-place-fe-superpowers:commit-push-pr-agent` after this polish step.

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import type { WeatherLoadResult } from "@/3_entities/weather/api/loadWeatherData";
+import type { WeatherLoadResult } from "@/4_shared/types/weather";
 import { WeatherDetailPage } from "../WeatherDetailPage";
 
 jest.mock("../ui/WeatherErrorToasts", () => ({

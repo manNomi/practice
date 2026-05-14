@@ -32,6 +32,17 @@ export type DailyForecast = {
   timezoneOffsetSeconds: number;
 };
 
+export type WeatherResource<T> = {
+  data: T | null;
+  error: unknown | null;
+};
+
+export type WeatherLoadResult = {
+  hasApiKey: boolean;
+  current: WeatherResource<CurrentWeather>;
+  forecast: WeatherResource<DailyForecast[]>;
+};
+
 export type OpenWeatherCurrentResponse = {
   sys: {
     country: string;

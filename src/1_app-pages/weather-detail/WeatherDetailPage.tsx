@@ -1,9 +1,9 @@
 import Image from "next/image";
-import type { WeatherLoadResult } from "@/3_entities/weather/api/loadWeatherData";
 import type { City } from "@/4_shared/config/cities";
 import { CITY_META } from "@/4_shared/config/cities";
 import { WEATHER_GLOBE_IMAGE } from "@/4_shared/config/layout";
 import { getApiErrorMessage } from "@/4_shared/lib/apiError";
+import type { WeatherLoadResult } from "@/4_shared/types/weather";
 import { CurrentWeatherCard } from "@/2_widgets/current-weather/CurrentWeatherCard";
 import { ForecastList } from "@/2_widgets/forecast/ForecastList";
 import { ErrorState } from "@/4_shared/ui/ErrorState";

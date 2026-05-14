@@ -1,23 +1,12 @@
 import type { City } from "@/4_shared/config/cities";
 import { OPENWEATHER_API_KEY } from "@/4_shared/config/env";
-import type { CurrentWeather, DailyForecast } from "@/4_shared/types/weather";
+import type { WeatherLoadResult, WeatherResource } from "@/4_shared/types/weather";
 import {
   createWeatherRequestOptions,
   weatherCacheTags,
 } from "./requestOptions";
 import { getCurrentWeather } from "./getCurrentWeather";
 import { getForecast } from "./getForecast";
-
-type WeatherResource<T> = {
-  data: T | null;
-  error: unknown | null;
-};
-
-export type WeatherLoadResult = {
-  hasApiKey: boolean;
-  current: WeatherResource<CurrentWeather>;
-  forecast: WeatherResource<DailyForecast[]>;
-};
 
 type LoadWeatherDataOptions = {
   apiKey?: string;

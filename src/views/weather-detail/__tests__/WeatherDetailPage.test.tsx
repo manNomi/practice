@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import type { WeatherLoadResult } from "@/entities/weather/api/loadWeatherData";
-import { WeatherDetailPage } from "./WeatherDetailPage";
+import { WeatherDetailPage } from "../WeatherDetailPage";
 
 const emptyWeather: WeatherLoadResult = {
   hasApiKey: true,

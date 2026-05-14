@@ -16,6 +16,8 @@
 - `src/widgets`: 현재 날씨 카드, 5일 예보, 도시 선택처럼 의미 있는 화면 섹션.
 - `src/entities/weather`: OpenWeather API 호출, cache/revalidate 설정, mapper, domain type.
 - `src/shared`: 도시 설정, env, formatter, 공용 상태 UI.
+- 테스트는 각 책임 영역의 `__tests__` 폴더에 모아 구현 파일 목록과 분리한다.
+- OpenWeather origin/path/query 기본값, 아이콘 URL 생성, revalidate 시간, 레이아웃 기준값은 config 상수와 CSS 변수로 공통화한다.
 
 ## 안정성 포인트
 

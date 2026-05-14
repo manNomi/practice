@@ -1,5 +1,10 @@
-import { WEATHER_REVALIDATE_SECONDS, weatherCacheTags } from "./cache";
-import { buildCurrentWeatherUrl, getCurrentWeather } from "./getCurrentWeather";
+import { WEATHER_REVALIDATE_SECONDS, weatherCacheTags } from "../cache";
+import {
+  OPENWEATHER_API_ORIGIN,
+  OPENWEATHER_PATHS,
+  OPENWEATHER_QUERY_DEFAULTS
+} from "../../config/openWeather";
+import { buildCurrentWeatherUrl, getCurrentWeather } from "../getCurrentWeather";
 
 const currentResponse = {
   dt: 1778755200,
@@ -38,13 +43,13 @@ describe("buildCurrentWeatherUrl", () => {
   it("builds the official OpenWeather Current Weather coordinate URL", () => {
     const url = buildCurrentWeatherUrl("Seoul", "test-key");
 
-    expect(url.origin).toBe("https://api.openweathermap.org");
-    expect(url.pathname).toBe("/data/2.5/weather");
+    expect(url.origin).toBe(OPENWEATHER_API_ORIGIN);
+    expect(url.pathname).toBe(OPENWEATHER_PATHS.currentWeather);
     expect(url.searchParams.get("lat")).toBe("37.5665");
     expect(url.searchParams.get("lon")).toBe("126.978");
     expect(url.searchParams.get("appid")).toBe("test-key");
-    expect(url.searchParams.get("units")).toBe("metric");
-    expect(url.searchParams.get("lang")).toBe("kr");
+    expect(url.searchParams.get("units")).toBe(OPENWEATHER_QUERY_DEFAULTS.units);
+    expect(url.searchParams.get("lang")).toBe(OPENWEATHER_QUERY_DEFAULTS.lang);
   });
 
   it("passes Next revalidate and tag options to fetch", async () => {
@@ -64,7 +69,7 @@ describe("buildCurrentWeatherUrl", () => {
 
     expect(fetchMock).toHaveBeenCalledWith(expect.any(URL), {
       next: {
-        revalidate: 600,
+        revalidate: WEATHER_REVALIDATE_SECONDS,
         tags: ["weather:Seoul", "weather:Seoul:current"]
       }
     });

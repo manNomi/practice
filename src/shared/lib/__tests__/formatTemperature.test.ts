@@ -1,4 +1,4 @@
-import { formatTemperature } from "./formatTemperature";
+import { formatTemperature } from "../formatTemperature";
 
 describe("formatTemperature", () => {
   it("rounds celsius values", () => {

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="min-w-[800px] px-8 py-10">
+    <main className="min-w-[var(--app-min-width)] px-8 py-10">
       <section className="mx-auto flex max-w-7xl flex-col gap-6 rounded-lg border border-[var(--line)] bg-[var(--surface)] p-8">
         <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary)]">
           404

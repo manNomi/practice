@@ -1,5 +1,5 @@
-import type { ForecastPoint } from "../model/types";
-import { groupForecastByDay } from "./groupForecastByDay";
+import type { ForecastPoint } from "../../model/types";
+import { groupForecastByDay } from "../groupForecastByDay";
 
 const point = (
   timestamp: string,

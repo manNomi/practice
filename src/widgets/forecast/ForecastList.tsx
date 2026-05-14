@@ -23,7 +23,7 @@ export function ForecastList({ days }: ForecastListProps) {
   return (
     <section
       aria-labelledby="forecast-title"
-      className="mx-auto w-full max-w-[1200px] overflow-hidden rounded-md border border-[var(--line)] bg-white"
+      className="mx-auto w-full max-w-[var(--weather-content-max-width)] overflow-hidden rounded-md border border-[var(--line)] bg-white"
     >
       <div className="flex h-20 items-center justify-center border-b border-[var(--line)] bg-white px-[30px]">
         <h2

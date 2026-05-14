@@ -2,7 +2,7 @@ import {
   formatCurrentDateTime,
   formatForecastDay,
   formatForecastTime
-} from "./formatDate";
+} from "../formatDate";
 
 describe("Figma date formatters", () => {
   it("formats forecast days", () => {

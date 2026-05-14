@@ -1,5 +1,10 @@
 import { CITY_META, type City } from "@/shared/config/cities";
 import { OPENWEATHER_API_KEY } from "@/shared/config/env";
+import {
+  createOpenWeatherApiUrl,
+  OPENWEATHER_PATHS,
+  OPENWEATHER_QUERY_DEFAULTS
+} from "../config/openWeather";
 import { createWeatherApiError, WeatherApiError } from "../lib/apiError";
 import { mapCurrentWeather } from "../lib/mapCurrentWeather";
 import type {
@@ -8,17 +13,15 @@ import type {
 } from "../model/types";
 import type { WeatherRequestOptions } from "./cache";
 
-const CURRENT_WEATHER_ENDPOINT =
-  "https://api.openweathermap.org/data/2.5/weather";
-
 export function buildCurrentWeatherUrl(city: City, apiKey: string) {
   const { lat, lon } = CITY_META[city].coordinates;
-  const url = new URL(CURRENT_WEATHER_ENDPOINT);
+  const url = createOpenWeatherApiUrl(OPENWEATHER_PATHS.currentWeather);
+
   url.searchParams.set("lat", String(lat));
   url.searchParams.set("lon", String(lon));
   url.searchParams.set("appid", apiKey);
-  url.searchParams.set("units", "metric");
-  url.searchParams.set("lang", "kr");
+  url.searchParams.set("units", OPENWEATHER_QUERY_DEFAULTS.units);
+  url.searchParams.set("lang", OPENWEATHER_QUERY_DEFAULTS.lang);
 
   return url;
 }

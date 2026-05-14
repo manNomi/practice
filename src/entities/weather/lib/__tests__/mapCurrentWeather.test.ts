@@ -1,4 +1,4 @@
-import { mapCurrentWeather } from "./mapCurrentWeather";
+import { mapCurrentWeather } from "../mapCurrentWeather";
 
 describe("mapCurrentWeather", () => {
   it("maps OpenWeather current response into the domain model", () => {

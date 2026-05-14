@@ -1,13 +1,13 @@
-import { WEATHER_REVALIDATE_SECONDS, weatherCacheTags } from "./cache";
-import { getCurrentWeather } from "./getCurrentWeather";
-import { getForecast } from "./getForecast";
-import { loadWeatherData } from "./loadWeatherData";
+import { WEATHER_REVALIDATE_SECONDS, weatherCacheTags } from "../cache";
+import { getCurrentWeather } from "../getCurrentWeather";
+import { getForecast } from "../getForecast";
+import { loadWeatherData } from "../loadWeatherData";
 
-jest.mock("./getCurrentWeather", () => ({
+jest.mock("../getCurrentWeather", () => ({
   getCurrentWeather: jest.fn()
 }));
 
-jest.mock("./getForecast", () => ({
+jest.mock("../getForecast", () => ({
   getForecast: jest.fn()
 }));
 

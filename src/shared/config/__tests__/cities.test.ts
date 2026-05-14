@@ -1,4 +1,4 @@
-import { getCanonicalCity, isSupportedCity } from "./cities";
+import { getCanonicalCity, isSupportedCity } from "../cities";
 
 describe("city helpers", () => {
   it("validates supported cities", () => {

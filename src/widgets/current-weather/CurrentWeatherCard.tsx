@@ -12,7 +12,7 @@ export function CurrentWeatherCard({ weather }: CurrentWeatherCardProps) {
   const meta = CITY_META[weather.city];
 
   return (
-    <article className="mx-auto flex h-[140px] w-full max-w-[1200px] items-center justify-between rounded-md border border-[var(--line)] bg-white px-[30px]">
+    <article className="mx-auto flex h-[140px] w-full max-w-[var(--weather-content-max-width)] items-center justify-between rounded-md border border-[var(--line)] bg-white px-[30px]">
       <div className="flex items-center gap-[40px]">
         <WeatherIconBadge iconCode={weather.iconCode} size="md" />
         <div className="flex flex-col gap-2.5 whitespace-nowrap tracking-normal">

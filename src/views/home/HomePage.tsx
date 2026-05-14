@@ -1,10 +1,11 @@
 import Image from "next/image";
+import { WEATHER_GLOBE_IMAGE } from "@/shared/config/layout";
 import { CitySelector } from "@/widgets/city-selector/CitySelector";
 
 export function HomePage() {
   return (
-    <main className="min-w-[800px]">
-      <section className="relative mx-auto min-h-[863px] w-full max-w-[1280px] overflow-hidden bg-[var(--background)]">
+    <main className="min-w-[var(--app-min-width)]">
+      <section className="relative mx-auto min-h-[var(--weather-artboard-min-height)] w-full max-w-[var(--app-max-width)] overflow-hidden bg-[var(--background)]">
         <header className="absolute left-1/2 top-[101px] flex -translate-x-1/2 flex-col items-center gap-5 text-center">
           <h1 className="whitespace-nowrap text-[82px] font-black leading-[1.1] tracking-normal">
             <span className="block text-[var(--foreground)]">Welcome to</span>
@@ -36,10 +37,10 @@ export function HomePage() {
         <Image
           src="/assets/weather-globe.png"
           alt=""
-          width={430}
-          height={321}
+          width={WEATHER_GLOBE_IMAGE.home.width}
+          height={WEATHER_GLOBE_IMAGE.home.height}
           priority
-          className="absolute left-1/2 top-[451px] h-[321px] w-[430px] -translate-x-1/2 object-contain"
+          className="absolute left-1/2 top-[451px] h-[var(--home-globe-height)] w-[var(--home-globe-width)] -translate-x-1/2 object-contain"
         />
       </section>
     </main>

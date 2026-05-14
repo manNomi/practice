@@ -11,6 +11,17 @@
   --primary-strong: #b70055;
   --accent: #ffd2cc;
   --danger: #b42318;
+  --app-min-width: 800px;
+  --app-max-width: 1280px;
+  --weather-content-max-width: 1200px;
+  --weather-artboard-min-height: 863px;
+  --detail-top-padding: 43px;
+  --detail-card-offset: 74px;
+  --weather-section-gap: 25px;
+  --detail-globe-width: 68px;
+  --detail-globe-height: 51px;
+  --home-globe-width: 430px;
+  --home-globe-height: 321px;
 }
 
 * {

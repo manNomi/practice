@@ -60,9 +60,11 @@ npm run start
 src/app       Next.js route entries, layout
 src/views     Page-level screen composition
 src/widgets   Meaningful UI sections
-src/entities  Weather domain API, hooks, keys, mappers, types
+src/entities  Weather domain API, cache config, mappers, types
 src/shared    Config, formatters, common UI
 ```
+
+테스트는 구현 파일과 같은 책임 영역 안의 `__tests__` 폴더에 둡니다. 예를 들어 `src/entities/weather/api/__tests__`처럼 배치해 코드 탐색 시 실제 구현 파일 목록이 과하게 붐비지 않도록 했습니다.
 
 OpenWeather API 호출은 `src/entities/weather/api`의 순수 함수로 분리했고, 상세 페이지는 Server Component에서 데이터를 가져옵니다. UI 컴포넌트는 OpenWeather 원본 응답 대신 mapper가 만든 domain model만 사용합니다.
 

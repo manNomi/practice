@@ -7,6 +7,7 @@ import {
   SUPPORTED_CITIES
 } from "@/shared/config/cities";
 
+// Next route segment config must be statically analyzable, so keep this literal.
 export const revalidate = 600;
 
 type CityPageProps = {

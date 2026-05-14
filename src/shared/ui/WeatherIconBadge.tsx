@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { createOpenWeatherIconUrl } from "@/entities/weather/config/openWeather";
 
 type WeatherIconBadgeProps = {
   iconCode?: string;
@@ -27,7 +28,7 @@ export function WeatherIconBadge({
     >
       {iconCode ? (
         <Image
-          src={`https://openweathermap.org/img/wn/${iconCode}@2x.png`}
+          src={createOpenWeatherIconUrl(iconCode)}
           alt=""
           width={imageSize[size]}
           height={imageSize[size]}

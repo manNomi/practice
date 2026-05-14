@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import type { DailyForecast } from "@/entities/weather/model/types";
-import { ForecastList } from "./ForecastList";
+import { ForecastList } from "../ForecastList";
 
 const days: DailyForecast[] = [
   {

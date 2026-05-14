@@ -51,8 +51,19 @@ export function ForecastList({ days }: ForecastListProps) {
               <span className="text-3xl font-bold leading-6 text-[var(--foreground)]">
                 {formatForecastDay(day.date)}
               </span>
-              <span className="text-2xl leading-none text-[var(--primary)]">
-                {expandedDate === day.date ? "^" : "v"}
+              <span className="flex items-center gap-5">
+                <span className="text-xl font-bold leading-[1.1] text-[var(--foreground)]">
+                  {formatTemperature(day.minTemperature, {
+                    precision: 2
+                  })}{" "}
+                  /{" "}
+                  {formatTemperature(day.maxTemperature, {
+                    precision: 2
+                  })}
+                </span>
+                <span className="text-2xl leading-none text-[var(--primary)]">
+                  {expandedDate === day.date ? "^" : "v"}
+                </span>
               </span>
             </button>
 
@@ -78,11 +89,7 @@ export function ForecastList({ days }: ForecastListProps) {
                         {point.description}
                       </p>
                       <p className="text-3xl font-bold leading-[1.1] text-[var(--foreground)]">
-                        {formatTemperature(day.minTemperature, {
-                          precision: 2
-                        })}{" "}
-                        /{" "}
-                        {formatTemperature(day.maxTemperature, {
+                        {formatTemperature(point.temperature, {
                           precision: 2
                         })}
                       </p>

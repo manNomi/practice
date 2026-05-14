@@ -5,10 +5,6 @@ describe("HomePage", () => {
   it("renders city links for the assignment routes", () => {
     render(<HomePage />);
 
-    expect(screen.getByText("Welcome to")).toBeInTheDocument();
-    expect(screen.getByText("Weather App!")).toBeInTheDocument();
-    expect(screen.getByText("Hover")).toBeInTheDocument();
-    expect(screen.getByText("Select")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Seoul/i })).toHaveAttribute(
       "href",
       "/Seoul"

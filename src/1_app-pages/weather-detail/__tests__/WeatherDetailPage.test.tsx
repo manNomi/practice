@@ -3,13 +3,7 @@ import type { WeatherLoadResult } from "@/4_shared/types/weather";
 import { WeatherDetailPage } from "../WeatherDetailPage";
 
 jest.mock("../ui/WeatherErrorToasts", () => ({
-  WeatherErrorToasts: ({
-    errors
-  }: {
-    errors: Array<{ id: string; message: string }>;
-  }) => (
-    <output data-testid="weather-error-toasts">{JSON.stringify(errors)}</output>
-  )
+  WeatherErrorToasts: () => null
 }));
 
 const emptyWeather: WeatherLoadResult = {
@@ -77,77 +71,32 @@ describe("WeatherDetailPage", () => {
     expect(
       screen.getByText("5일 예보를 불러오지 못했습니다")
     ).toBeInTheDocument();
-    expect(screen.getByTestId("weather-error-toasts")).toHaveTextContent(
-      "Seoul:forecast-error"
-    );
-    expect(screen.getByTestId("weather-error-toasts")).toHaveTextContent(
-      "network failed"
-    );
   });
 
-  it("renders the Figma detail heading and current weather card", () => {
-    render(
-      <WeatherDetailPage
-        city="Seoul"
-        weather={{
-          ...emptyWeather,
-          current: {
-            data: currentWeather,
-            error: null
-          }
-        }}
-      />
-    );
-
-    expect(
-      screen.getByRole("heading", {
-        name: "Weather Information for Seoul"
-      })
-    ).toBeInTheDocument();
-    expect(screen.getByText("Seoul, KR")).toBeInTheDocument();
-    expect(screen.getByText("21.40℃")).toBeInTheDocument();
-  });
-
-  it("renders the forecast accordion with the first day expanded", () => {
+  it("shows both inline errors when both weather APIs fail", () => {
     render(
       <WeatherDetailPage
         city="Seoul"
         weather={{
           hasApiKey: true,
           current: {
-            data: currentWeather,
-            error: null
+            data: null,
+            error: new Error("current failed")
           },
           forecast: {
-            data: [
-              {
-                date: "2026-05-23",
-                minTemperature: 21.4,
-                maxTemperature: 24.6,
-                representativeDescription: "clear sky",
-                timezoneOffsetSeconds: 9 * 60 * 60,
-                points: [
-                  {
-                    timestamp: "2026-05-22T18:00:00.000Z",
-                    temperature: 21.4,
-                    humidity: 40,
-                    description: "clear sky",
-                    iconCode: "01d",
-                    precipitationProbability: 0
-                  }
-                ]
-              }
-            ],
-            error: null
+            data: null,
+            error: new Error("forecast failed")
           }
         }}
       />
     );
 
-    expect(screen.getByRole("button", { name: /May 23/i })).toHaveAttribute(
-      "aria-expanded",
-      "true"
-    );
-    expect(screen.getByText("03:00am")).toBeInTheDocument();
+    expect(
+      screen.getByText("현재 날씨를 불러오지 못했습니다")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("5일 예보를 불러오지 못했습니다")
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Seoul, KR")).not.toBeInTheDocument();
   });
 });

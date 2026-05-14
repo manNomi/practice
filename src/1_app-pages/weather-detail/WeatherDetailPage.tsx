@@ -72,11 +72,13 @@ export function WeatherDetailPage({ city, weather }: WeatherDetailPageProps) {
           </div>
         ) : null}
 
-        <div className="mt-[var(--detail-card-offset)]">
-          {current.data ? <CurrentWeatherCard weather={current.data} /> : null}
-        </div>
+        {current.data ? (
+          <div className="mt-[var(--detail-card-offset)]">
+            <CurrentWeatherCard weather={current.data} />
+          </div>
+        ) : null}
 
-        {hasApiKey && forecast.error && !current.error ? (
+        {hasApiKey && forecast.error ? (
           <div className="mx-auto mt-[var(--weather-section-gap)] max-w-[var(--weather-content-max-width)]">
             <ErrorState
               title="5일 예보를 불러오지 못했습니다"

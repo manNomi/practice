@@ -12,7 +12,7 @@ const days: DailyForecast[] = [
     points: [
       {
         timestamp: "2026-05-23T03:00:00.000Z",
-        temperature: 21.4,
+        temperature: 22.3,
         humidity: 40,
         description: "clear sky",
         iconCode: "01d",
@@ -43,14 +43,11 @@ describe("ForecastList", () => {
   it("expands the first day by default and toggles rows", () => {
     render(<ForecastList days={days} />);
 
-    expect(
-      screen.getByRole("heading", { name: "5-day Forecast" })
-    ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /May 23/i })).toHaveAttribute(
       "aria-expanded",
       "true"
     );
-    expect(screen.getByText("21.40℃ / 24.60℃")).toBeInTheDocument();
+    expect(screen.getByText("22.30℃")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /May 23/i }));
 

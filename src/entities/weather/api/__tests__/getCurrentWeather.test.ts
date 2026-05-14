@@ -3,7 +3,7 @@ import {
   OPENWEATHER_API_ORIGIN,
   OPENWEATHER_PATHS,
   OPENWEATHER_QUERY_DEFAULTS
-} from "../../config/openWeather";
+} from "@/shared/config/openWeather";
 import { buildCurrentWeatherUrl, getCurrentWeather } from "../getCurrentWeather";
 
 const currentResponse = {

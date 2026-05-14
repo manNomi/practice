@@ -3,7 +3,7 @@ import type { WeatherLoadResult } from "@/entities/weather/api/loadWeatherData";
 import type { City } from "@/shared/config/cities";
 import { CITY_META } from "@/shared/config/cities";
 import { WEATHER_GLOBE_IMAGE } from "@/shared/config/layout";
-import { getWeatherErrorMessage } from "@/entities/weather/lib/apiError";
+import { getApiErrorMessage } from "@/shared/lib/apiError";
 import { CurrentWeatherCard } from "@/widgets/current-weather/CurrentWeatherCard";
 import { ForecastList } from "@/widgets/forecast/ForecastList";
 import { ErrorState } from "@/shared/ui/ErrorState";
@@ -18,10 +18,10 @@ export function WeatherDetailPage({ city, weather }: WeatherDetailPageProps) {
   const meta = CITY_META[city];
   const { current, forecast, hasApiKey } = weather;
   const currentErrorMessage = current.error
-    ? getWeatherErrorMessage(current.error)
+    ? getApiErrorMessage(current.error)
     : null;
   const forecastErrorMessage = forecast.error
-    ? getWeatherErrorMessage(forecast.error)
+    ? getApiErrorMessage(forecast.error)
     : null;
   const toastErrors: WeatherToastError[] = [
     ...(hasApiKey && currentErrorMessage

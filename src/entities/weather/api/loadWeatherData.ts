@@ -1,6 +1,6 @@
 import type { City } from "@/shared/config/cities";
 import { OPENWEATHER_API_KEY } from "@/shared/config/env";
-import type { CurrentWeather, DailyForecast } from "../model/types";
+import type { CurrentWeather, DailyForecast } from "@/shared/types/weather";
 import {
   WEATHER_REVALIDATE_SECONDS,
   weatherCacheTags,

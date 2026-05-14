@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { DailyForecast } from "@/entities/weather/model/types";
+import type { DailyForecast } from "@/shared/types/weather";
 import { EmptyState } from "@/shared/ui/EmptyState";
 import { formatForecastDay, formatForecastTime } from "@/shared/lib/formatDate";
 import { formatTemperature } from "@/shared/lib/formatTemperature";

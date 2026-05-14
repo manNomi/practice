@@ -1,4 +1,4 @@
-import type { CurrentWeather } from "@/entities/weather/model/types";
+import type { CurrentWeather } from "@/shared/types/weather";
 import { CITY_META } from "@/shared/config/cities";
 import { formatCurrentDateTime } from "@/shared/lib/formatDate";
 import { formatTemperature } from "@/shared/lib/formatTemperature";

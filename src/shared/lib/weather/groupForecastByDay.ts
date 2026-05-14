@@ -1,4 +1,4 @@
-import type { DailyForecast, ForecastPoint } from "../model/types";
+import type { DailyForecast, ForecastPoint } from "@/shared/types/weather";
 
 function toLocalDateKey(timestamp: string, timezoneOffsetSeconds: number) {
   const localTime =

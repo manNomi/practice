@@ -4,13 +4,13 @@ import {
   createOpenWeatherApiUrl,
   OPENWEATHER_PATHS,
   OPENWEATHER_QUERY_DEFAULTS
-} from "../config/openWeather";
-import { createWeatherApiError, WeatherApiError } from "../lib/apiError";
-import { mapForecast } from "../lib/mapForecast";
+} from "@/shared/config/openWeather";
+import { ApiError, createApiError } from "@/shared/lib/apiError";
+import { mapForecast } from "@/shared/lib/weather/mapForecast";
 import type {
   DailyForecast,
   OpenWeatherForecastResponse
-} from "../model/types";
+} from "@/shared/types/weather";
 import type { WeatherRequestOptions } from "./cache";
 
 export function buildForecastUrl(city: City, apiKey: string) {
@@ -33,7 +33,7 @@ export async function getForecast(
   const apiKey = options.apiKey ?? OPENWEATHER_API_KEY;
 
   if (!apiKey) {
-    throw new WeatherApiError("OpenWeather API key가 설정되지 않았습니다.");
+    throw new ApiError("OpenWeather API key가 설정되지 않았습니다.");
   }
 
   const response = await fetch(buildForecastUrl(city, apiKey), {
@@ -41,7 +41,7 @@ export async function getForecast(
   });
 
   if (!response.ok) {
-    throw await createWeatherApiError(response);
+    throw await createApiError(response, "OpenWeather 5일 예보 요청");
   }
 
   return mapForecast((await response.json()) as OpenWeatherForecastResponse);

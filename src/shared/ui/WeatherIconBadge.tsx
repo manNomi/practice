@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { createOpenWeatherIconUrl } from "@/entities/weather/config/openWeather";
+import { createOpenWeatherIconUrl } from "@/shared/config/openWeather";
 
 type WeatherIconBadgeProps = {
   iconCode?: string;

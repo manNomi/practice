@@ -2,7 +2,7 @@ import type {
   DailyForecast,
   ForecastPoint,
   OpenWeatherForecastResponse
-} from "../model/types";
+} from "@/shared/types/weather";
 import { groupForecastByDay } from "./groupForecastByDay";
 
 export function mapForecastPoint(

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import type { DailyForecast } from "@/entities/weather/model/types";
+import type { DailyForecast } from "@/shared/types/weather";
 import { ForecastList } from "../ForecastList";
 
 const days: DailyForecast[] = [

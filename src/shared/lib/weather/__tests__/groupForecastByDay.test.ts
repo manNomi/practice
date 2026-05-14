@@ -1,4 +1,4 @@
-import type { ForecastPoint } from "../../model/types";
+import type { ForecastPoint } from "@/shared/types/weather";
 import { groupForecastByDay } from "../groupForecastByDay";
 
 const point = (

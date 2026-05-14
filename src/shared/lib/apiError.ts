@@ -1,14 +1,14 @@
-export class WeatherApiError extends Error {
+export class ApiError extends Error {
   readonly status?: number;
 
   constructor(message: string, status?: number) {
     super(message);
-    this.name = "WeatherApiError";
+    this.name = "ApiError";
     this.status = status;
   }
 }
 
-export async function createWeatherApiError(response: Response) {
+export async function createApiError(response: Response, prefix = "API 요청") {
   let apiMessage = "";
 
   try {
@@ -18,14 +18,11 @@ export async function createWeatherApiError(response: Response) {
     apiMessage = "";
   }
 
-  return new WeatherApiError(
-    `OpenWeather 요청에 실패했습니다${apiMessage}.`,
-    response.status
-  );
+  return new ApiError(`${prefix}에 실패했습니다${apiMessage}.`, response.status);
 }
 
-export function getWeatherErrorMessage(error: unknown) {
-  if (error instanceof WeatherApiError) {
+export function getApiErrorMessage(error: unknown) {
+  if (error instanceof ApiError) {
     return error.message;
   }
 

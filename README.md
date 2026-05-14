@@ -61,13 +61,13 @@ npm run start
 src/app       Next.js route entries, layout
 src/views     Page-level screen composition
 src/widgets   Meaningful UI sections
-src/entities  Weather domain API, cache config, mappers, types
-src/shared    Config, formatters, common UI
+src/entities  Weather API call layer only
+src/shared    Config, formatters, mappers, types, common UI
 ```
 
 테스트는 구현 파일과 같은 책임 영역 안의 `__tests__` 폴더에 둡니다. 예를 들어 `src/entities/weather/api/__tests__`처럼 배치해 코드 탐색 시 실제 구현 파일 목록이 과하게 붐비지 않도록 했습니다.
 
-OpenWeather API 호출은 `src/entities/weather/api`의 순수 함수로 분리했고, 상세 페이지는 Server Component에서 데이터를 가져옵니다. UI 컴포넌트는 OpenWeather 원본 응답 대신 mapper가 만든 domain model만 사용합니다.
+OpenWeather API 호출은 `src/entities/weather/api`의 순수 함수로 분리했고, 상세 페이지는 Server Component에서 데이터를 가져옵니다. API error, URL config, mapper, type처럼 API 호출 자체가 아닌 공통 코드는 `src/shared`에 둡니다.
 
 날씨 상세 라우트는 `generateStaticParams`로 네 도시 경로를 생성하고 `revalidate = 600`으로 10분 단위 ISR을 적용합니다. Current Weather와 5 Day / 3 Hour Forecast는 서버에서 `Promise.allSettled`로 병렬 호출하므로 한쪽 API가 실패해도 성공한 데이터는 가능한 범위까지 표시합니다.
 

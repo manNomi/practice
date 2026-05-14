@@ -2,7 +2,7 @@ import type { City } from "@/shared/config/cities";
 import type {
   CurrentWeather,
   OpenWeatherCurrentResponse
-} from "../model/types";
+} from "@/shared/types/weather";
 
 export function mapCurrentWeather(
   response: OpenWeatherCurrentResponse,

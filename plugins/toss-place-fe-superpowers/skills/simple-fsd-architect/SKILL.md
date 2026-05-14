@@ -80,6 +80,8 @@ Use `views/` as the default name for the FSD pages layer in Next.js App Router p
 - Move common query helpers to `shared/api` or `shared/lib` depending on the project convention.
 - Move shared UI to `shared/ui`.
 - Move common config and constants to `shared/config` or `shared/constants`.
+- Treat page/view components importing API response types directly from API modules as a boundary smell. Prefer domain-facing types or view-local props.
+- If the team uses numbered FSD layers, do not physically rename Next.js `src/app`; document it as logical `0_App` while keeping the real App Router path intact.
 
 ## Hydration-aware structure
 
@@ -127,6 +129,7 @@ Keep one-off composition, route-only state, and simple markup local.
 ### 8. What should not be abstracted yet
 
 Call out abstractions that would be premature.
+Call out FSD boundary smells: API response type leakage into views, common code in `entities`, mixed route/page/widget/entity files, and physical `src/app` renaming.
 
 ### 9. Migration path if the assignment grows
 

@@ -17,8 +17,10 @@ This plugin prevents jumping directly into code and instead enforces:
 - API layer separation
 - re-render-aware component boundaries
 - React/Next.js performance best-practice review
+- test quality review
 - reliability review
 - review-fix loops
+- README rationale writing
 - planning feedback loops
 - feature-sized commits
 - optional parallel subagent orchestration
@@ -36,7 +38,9 @@ Use this plugin when:
 - designing API and React Query layers
 - splitting components
 - reviewing React/Next.js performance risks
+- reviewing whether tests protect meaningful behavior instead of static copy
 - reviewing code before submission
+- writing README design rationale, test strategy, and verification evidence
 - planning a non-trivial implementation before coding
 - running an end-to-end assignment workflow with explicitly requested parallel agents
 - repeating review, fix, and verification loops after implementation
@@ -60,9 +64,11 @@ Use this when you want to control each step yourself:
 9. `$toss-place-fe-superpowers:reliability-first-planner`
 10. `$toss-place-fe-superpowers:react-best-practices`
 11. `$toss-place-fe-superpowers:toss-fe-code-review`
-12. `$toss-place-fe-superpowers:offline-edge-case-checker`
-13. `$toss-place-fe-superpowers:final-submit-polisher`
-14. `$toss-place-fe-superpowers:commit-push-pr-agent`
+12. `$toss-place-fe-superpowers:test-quality-reviewer`
+13. `$toss-place-fe-superpowers:offline-edge-case-checker`
+14. `$toss-place-fe-superpowers:readme-rationale-writer`
+15. `$toss-place-fe-superpowers:final-submit-polisher`
+16. `$toss-place-fe-superpowers:commit-push-pr-agent`
 
 When this plugin is installed through a Codex marketplace, use the namespaced skill names above.
 
@@ -199,6 +205,20 @@ $toss-place-fe-superpowers:react-best-practices
 Review this Next.js assignment with react-best-practices and prioritize waterfalls, bundle size, RSC boundaries, cache strategy, and re-render risks.
 ```
 
+### `$toss-place-fe-superpowers:test-quality-reviewer`
+
+```text
+$toss-place-fe-superpowers:test-quality-reviewer
+Review these tests for low-value copy checks, bug-locking expectations, missing regression coverage, pure logic coverage, and accessibility states.
+```
+
+### `$toss-place-fe-superpowers:readme-rationale-writer`
+
+```text
+$toss-place-fe-superpowers:readme-rationale-writer
+Draft README rationale sections for Design Rationale, API / Cache Strategy, React Query Trade-off, FSD Boundary, Error Handling Strategy, Test Strategy, Known Limitations, and Verification Evidence.
+```
+
 ### `$toss-place-fe-superpowers:reliability-first-planner`
 
 ```text
@@ -239,6 +259,7 @@ Check README, scripts, verification commands, trade-offs, limitations, final dif
 - Prefer React Query hydration when server-prefetched data should be consumed by client widgets through hooks.
 - Align React Query `staleTime` with the Next.js server cache strategy.
 - Review React performance in impact order: waterfalls, bundle size, RSC/cache/data fetching, then re-renders.
+- Review tests by behavior value: regression, state transition, pure logic, accessibility, and failure modes before static copy.
 - Separate pure API functions from React Query hooks.
 - Keep query option factories reusable across `prefetchQuery`, hydration, and hooks.
 - Use Simple FSD without over-engineering.
@@ -249,6 +270,7 @@ Check README, scripts, verification commands, trade-offs, limitations, final dif
 - Treat Toss-style assignment context as inference, not official fact.
 - Record unclear requirements as assumptions and ask for feedback before implementation.
 - Document assumptions, trade-offs, exception handling, AI usage, and verification in README.
+- Include Design Rationale, API / Cache Strategy, React Query Trade-off, FSD Boundary, Error Handling Strategy, Test Strategy, Known Limitations, and Verification Evidence in README when relevant.
 - Ask for all page screenshots and Figma/design references before large UI implementation.
 - Use Codex subagents only when parallel/delegated work is explicitly requested.
 - Give each worker a disjoint write scope.

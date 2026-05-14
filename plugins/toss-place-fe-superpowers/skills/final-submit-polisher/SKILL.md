@@ -17,7 +17,14 @@ Use this after implementation and review, before submitting a frontend assignmen
 - lint/typecheck command
 - implementation scope
 - decisions and trade-offs
+- Design Rationale
+- API / Cache Strategy
+- React Query Trade-off
+- FSD Boundary
+- Error Handling Strategy
+- Test Strategy
 - known limitations
+- Verification Evidence
 - folder structure explanation
 - API/cache/state strategy explanation
 - static rendering, `revalidate`, ISR, tag/path revalidation, and `no-store` decisions
@@ -39,6 +46,7 @@ State whether the project is ready, nearly ready, or blocked.
 ### 2. README improvements
 
 List missing or weak README sections and exact content to add.
+Require Design Rationale, API / Cache Strategy, React Query Trade-off, FSD Boundary, Error Handling Strategy, Test Strategy, Known Limitations, and Verification Evidence when relevant.
 
 ### 3. Verification commands
 

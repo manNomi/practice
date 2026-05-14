@@ -16,6 +16,8 @@ Use this when the assignment uses Next.js App Router or when Next.js is being co
 - Do not turn an entire page into `"use client"` unless unavoidable.
 - In App Router, `app/` route files are thin shells. Put real page components in `views/`.
 - When client widgets benefit from server-prefetched server state, prefer React Query hydration over prop-drilling large data through the whole tree.
+- If React Query exists in the stack, do not use it automatically. RSC, fetch cache, and ISR still come first for cacheable initial data.
+- Not using React Query is acceptable when RSC/cache/ISR is enough. Not explaining that trade-off in README is a review risk.
 
 Preferred route shell:
 
@@ -77,6 +79,8 @@ Do not use React Query for:
 - cacheable initial page data
 - data already fetched by Server Components without client-side updates
 - local UI state
+
+When React Query is intentionally not used despite being available, record the reason in README under `React Query Trade-off`.
 
 ## Hydration strategy
 
@@ -165,6 +169,7 @@ Create a matrix with columns: route/data, static or `force-cache`, `revalidate` 
 ### 6. React Query usage
 
 Say exactly where React Query is useful, whether hydration is recommended, where query options live, and which client widgets consume hooks.
+If React Query is not used, state why RSC/cache/ISR is enough and what README trade-off should be documented.
 
 ### 7. State placement
 

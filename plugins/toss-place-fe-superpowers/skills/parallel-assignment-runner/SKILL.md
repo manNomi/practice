@@ -34,7 +34,9 @@ Use these skills as checkpoints inside the orchestration:
 - `$toss-place-fe-superpowers:component-boundary-planner` (`$component-boundary-planner`)
 - `$toss-place-fe-superpowers:reliability-first-planner` (`$reliability-first-planner`)
 - `$toss-place-fe-superpowers:toss-fe-code-review` (`$toss-fe-code-review`)
+- `$toss-place-fe-superpowers:test-quality-reviewer` (`$test-quality-reviewer`)
 - `$toss-place-fe-superpowers:offline-edge-case-checker` (`$offline-edge-case-checker`)
+- `$toss-place-fe-superpowers:readme-rationale-writer` (`$readme-rationale-writer`)
 - `$toss-place-fe-superpowers:final-submit-polisher` (`$final-submit-polisher`)
 - `$toss-place-fe-superpowers:review-fix-loop` (`$review-fix-loop`)
 - `$toss-place-fe-superpowers:commit-push-pr-agent` (`$commit-push-pr-agent`)
@@ -51,9 +53,11 @@ Use these skills as checkpoints inside the orchestration:
 8. Run deterministic verification commands.
 9. Run a read-only reviewer agent.
 10. Fix Critical findings and requirement/correctness/reliability Important findings.
-11. Re-run verification and repeat the review-fix loop up to 3 times.
-12. Polish final submission and report residual risk.
-13. When the user requests git delivery, hand verified feature-sized commit groups to `$toss-place-fe-superpowers:commit-push-pr-agent`.
+11. Review test quality when tests exist or should exist.
+12. Re-run verification and repeat the review-fix loop up to 3 times.
+13. Write README rationale sections before final polish.
+14. Polish final submission and report residual risk.
+15. When the user requests git delivery, hand verified feature-sized commit groups to `$toss-place-fe-superpowers:commit-push-pr-agent`.
 
 ## Slice design
 

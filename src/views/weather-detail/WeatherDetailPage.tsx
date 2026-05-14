@@ -7,6 +7,7 @@ import { getWeatherErrorMessage } from "@/entities/weather/lib/apiError";
 import { CurrentWeatherCard } from "@/widgets/current-weather/CurrentWeatherCard";
 import { ForecastList } from "@/widgets/forecast/ForecastList";
 import { ErrorState } from "@/shared/ui/ErrorState";
+import { WeatherErrorToasts, type WeatherToastError } from "./WeatherErrorToasts";
 
 type WeatherDetailPageProps = {
   city: City;
@@ -16,9 +17,24 @@ type WeatherDetailPageProps = {
 export function WeatherDetailPage({ city, weather }: WeatherDetailPageProps) {
   const meta = CITY_META[city];
   const { current, forecast, hasApiKey } = weather;
+  const currentErrorMessage = current.error
+    ? getWeatherErrorMessage(current.error)
+    : null;
+  const forecastErrorMessage = forecast.error
+    ? getWeatherErrorMessage(forecast.error)
+    : null;
+  const toastErrors: WeatherToastError[] = [
+    ...(hasApiKey && currentErrorMessage
+      ? [{ id: `${city}:current-weather-error`, message: currentErrorMessage }]
+      : []),
+    ...(hasApiKey && forecastErrorMessage
+      ? [{ id: `${city}:forecast-error`, message: forecastErrorMessage }]
+      : [])
+  ];
 
   return (
     <main className="min-w-[var(--app-min-width)]">
+      <WeatherErrorToasts errors={toastErrors} />
       <section className="relative mx-auto min-h-[var(--weather-artboard-min-height)] w-full max-w-[var(--app-max-width)] bg-[var(--background)] px-10 pb-20 pt-[var(--detail-top-padding)]">
         <header className="flex flex-col items-center text-center">
           <Image
@@ -48,7 +64,7 @@ export function WeatherDetailPage({ city, weather }: WeatherDetailPageProps) {
           <div className="mx-auto mt-10 max-w-[var(--weather-content-max-width)]">
             <ErrorState
               title="현재 날씨를 불러오지 못했습니다"
-              message={getWeatherErrorMessage(current.error)}
+              message={currentErrorMessage ?? "알 수 없는 오류가 발생했습니다."}
             />
           </div>
         ) : null}
@@ -61,7 +77,7 @@ export function WeatherDetailPage({ city, weather }: WeatherDetailPageProps) {
           <div className="mx-auto mt-[var(--weather-section-gap)] max-w-[var(--weather-content-max-width)]">
             <ErrorState
               title="5일 예보를 불러오지 못했습니다"
-              message={getWeatherErrorMessage(forecast.error)}
+              message={forecastErrorMessage ?? "알 수 없는 오류가 발생했습니다."}
             />
           </div>
         ) : null}

@@ -2,6 +2,16 @@ import { render, screen } from "@testing-library/react";
 import type { WeatherLoadResult } from "@/entities/weather/api/loadWeatherData";
 import { WeatherDetailPage } from "../WeatherDetailPage";
 
+jest.mock("../WeatherErrorToasts", () => ({
+  WeatherErrorToasts: ({
+    errors
+  }: {
+    errors: Array<{ id: string; message: string }>;
+  }) => (
+    <output data-testid="weather-error-toasts">{JSON.stringify(errors)}</output>
+  )
+}));
+
 const emptyWeather: WeatherLoadResult = {
   hasApiKey: true,
   current: {
@@ -67,6 +77,12 @@ describe("WeatherDetailPage", () => {
     expect(
       screen.getByText("5일 예보를 불러오지 못했습니다")
     ).toBeInTheDocument();
+    expect(screen.getByTestId("weather-error-toasts")).toHaveTextContent(
+      "Seoul:forecast-error"
+    );
+    expect(screen.getByTestId("weather-error-toasts")).toHaveTextContent(
+      "network failed"
+    );
   });
 
   it("renders the Figma detail heading and current weather card", () => {

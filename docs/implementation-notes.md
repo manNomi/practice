@@ -22,6 +22,7 @@
 ## 안정성 포인트
 
 - API key 누락, loading, current weather 실패, forecast 실패, empty forecast를 각각 분리해서 표시한다.
+- OpenWeather API 요청 실패는 inline error와 `react-hot-toast` 보조 알림을 함께 제공한다.
 - current weather와 forecast는 서버에서 `Promise.allSettled`로 병렬 호출하므로 독립적으로 실패할 수 있고, 한쪽 데이터가 성공하면 가능한 범위까지 보여준다.
 - 상세 라우트는 `revalidate = 600`과 OpenWeather fetch `next.revalidate`를 사용해 10분 단위로 재검증한다.
 - React Query는 dependency로 유지하지만 초기 날씨 데이터에는 사용하지 않는다. 캐시 가능한 초기 데이터는 RSC/ISR이 더 적합하기 때문이다.

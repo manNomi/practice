@@ -1,4 +1,7 @@
-import { WEATHER_REVALIDATE_SECONDS, weatherCacheTags } from "../cache";
+import {
+  WEATHER_REVALIDATE_SECONDS,
+  weatherCacheTags
+} from "../requestOptions";
 import { getCurrentWeather } from "../getCurrentWeather";
 import { getForecast } from "../getForecast";
 import { loadWeatherData } from "../loadWeatherData";

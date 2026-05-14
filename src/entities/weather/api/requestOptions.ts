@@ -14,3 +14,16 @@ export type WeatherRequestOptions = {
     tags?: string[];
   };
 };
+
+export function createWeatherRequestOptions(
+  apiKey: string,
+  tags: string[]
+): WeatherRequestOptions {
+  return {
+    apiKey,
+    next: {
+      revalidate: WEATHER_REVALIDATE_SECONDS,
+      tags
+    }
+  };
+}

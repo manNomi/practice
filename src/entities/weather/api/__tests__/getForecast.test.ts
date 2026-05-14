@@ -1,10 +1,14 @@
-import { WEATHER_REVALIDATE_SECONDS, weatherCacheTags } from "../cache";
+import { OPENWEATHER_PATHS } from "@/shared/config/openWeather";
 import {
-  OPENWEATHER_API_ORIGIN,
-  OPENWEATHER_PATHS,
-  OPENWEATHER_QUERY_DEFAULTS
-} from "@/shared/config/openWeather";
+  expectOpenWeatherUrl,
+  mockFetchJson,
+  restoreFetch
+} from "../__test-utils__/helpers";
 import { buildForecastUrl, getForecast } from "../getForecast";
+import {
+  WEATHER_REVALIDATE_SECONDS,
+  weatherCacheTags
+} from "../requestOptions";
 
 const forecastResponse = {
   city: {
@@ -28,35 +32,19 @@ const forecastResponse = {
   ]
 };
 
-const originalFetch = globalThis.fetch;
-
 describe("buildForecastUrl", () => {
   afterEach(() => {
-    if (originalFetch) {
-      globalThis.fetch = originalFetch;
-    } else {
-      delete (globalThis as { fetch?: unknown }).fetch;
-    }
+    restoreFetch();
   });
 
   it("builds the official OpenWeather 5 day / 3 hour forecast coordinate URL", () => {
     const url = buildForecastUrl("Seoul", "test-key");
 
-    expect(url.origin).toBe(OPENWEATHER_API_ORIGIN);
-    expect(url.pathname).toBe(OPENWEATHER_PATHS.forecast);
-    expect(url.searchParams.get("lat")).toBe("37.5665");
-    expect(url.searchParams.get("lon")).toBe("126.978");
-    expect(url.searchParams.get("appid")).toBe("test-key");
-    expect(url.searchParams.get("units")).toBe(OPENWEATHER_QUERY_DEFAULTS.units);
-    expect(url.searchParams.get("lang")).toBe(OPENWEATHER_QUERY_DEFAULTS.lang);
+    expectOpenWeatherUrl(url, OPENWEATHER_PATHS.forecast);
   });
 
   it("passes Next revalidate and tag options to fetch", async () => {
-    const fetchMock = jest.fn().mockResolvedValue({
-      ok: true,
-      json: async () => forecastResponse
-    } as unknown as Response);
-    globalThis.fetch = fetchMock as typeof fetch;
+    const fetchMock = mockFetchJson(forecastResponse);
 
     await getForecast("Seoul", {
       apiKey: "test-key",

@@ -2,10 +2,9 @@ import type { City } from "@/shared/config/cities";
 import { OPENWEATHER_API_KEY } from "@/shared/config/env";
 import type { CurrentWeather, DailyForecast } from "@/shared/types/weather";
 import {
-  WEATHER_REVALIDATE_SECONDS,
+  createWeatherRequestOptions,
   weatherCacheTags,
-  type WeatherRequestOptions
-} from "./cache";
+} from "./requestOptions";
 import { getCurrentWeather } from "./getCurrentWeather";
 import { getForecast } from "./getForecast";
 
@@ -47,20 +46,6 @@ function toResource<T>(
   };
 }
 
-function createRequestOptions(
-  city: City,
-  tags: string[],
-  apiKey: string
-): WeatherRequestOptions {
-  return {
-    apiKey,
-    next: {
-      revalidate: WEATHER_REVALIDATE_SECONDS,
-      tags
-    }
-  };
-}
-
 export async function loadWeatherData(
   city: City,
   options: LoadWeatherDataOptions = {}
@@ -78,11 +63,11 @@ export async function loadWeatherData(
   const [current, forecast] = await Promise.allSettled([
     getCurrentWeather(
       city,
-      createRequestOptions(city, weatherCacheTags.current(city), apiKey)
+      createWeatherRequestOptions(apiKey, weatherCacheTags.current(city))
     ),
     getForecast(
       city,
-      createRequestOptions(city, weatherCacheTags.forecast(city), apiKey)
+      createWeatherRequestOptions(apiKey, weatherCacheTags.forecast(city))
     )
   ]);
 

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { toast } from "react-hot-toast";
-import { WeatherErrorToasts } from "../WeatherErrorToasts";
+import { WeatherErrorToasts } from "./WeatherErrorToasts";
 
 jest.mock("react-hot-toast", () => ({
   toast: {

@@ -7,7 +7,10 @@ import { getApiErrorMessage } from "@/shared/lib/apiError";
 import { CurrentWeatherCard } from "@/widgets/current-weather/CurrentWeatherCard";
 import { ForecastList } from "@/widgets/forecast/ForecastList";
 import { ErrorState } from "@/shared/ui/ErrorState";
-import { WeatherErrorToasts, type WeatherToastError } from "./WeatherErrorToasts";
+import {
+  WeatherErrorToasts,
+  type WeatherToastError
+} from "./ui/WeatherErrorToasts";
 
 type WeatherDetailPageProps = {
   city: City;

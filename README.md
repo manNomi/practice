@@ -59,7 +59,7 @@ npm run start
 
 ```text
 src/app       Next.js route entries, layout
-src/views     Page-level screen composition
+src/app-pages Page-level screen composition
 src/widgets   Meaningful UI sections
 src/entities  Weather API call layer only
 src/shared    Config, formatters, mappers, types, common UI

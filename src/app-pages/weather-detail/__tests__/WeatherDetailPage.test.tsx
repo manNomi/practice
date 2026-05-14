@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import type { WeatherLoadResult } from "@/entities/weather/api/loadWeatherData";
 import { WeatherDetailPage } from "../WeatherDetailPage";
 
-jest.mock("../WeatherErrorToasts", () => ({
+jest.mock("../ui/WeatherErrorToasts", () => ({
   WeatherErrorToasts: ({
     errors
   }: {

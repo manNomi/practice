@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { loadWeatherData } from "@/entities/weather/api/loadWeatherData";
-import { WeatherDetailPage } from "@/views/weather-detail/WeatherDetailPage";
+import { WeatherDetailPage } from "@/app-pages/weather-detail/WeatherDetailPage";
 import {
   getCanonicalCity,
   isSupportedCity,

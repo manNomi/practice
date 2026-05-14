@@ -12,7 +12,7 @@
 ## 아키텍처
 
 - `src/app`: Next.js App Router, layout, route entry.
-- `src/views`: route-level screen composition.
+- `src/app-pages`: route-level screen composition.
 - `src/widgets`: 현재 날씨 카드, 5일 예보, 도시 선택처럼 의미 있는 화면 섹션.
 - `src/entities/weather`: OpenWeather API 호출과 cache/revalidate 설정만 둔다.
 - `src/shared`: 도시 설정, env, URL config, formatter, mapper, type, 공용 에러 유틸, 공용 UI.

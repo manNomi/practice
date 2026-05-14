@@ -1,0 +1,41 @@
+{
+  "name": "toss-place-fe-superpowers",
+  "version": "0.1.0",
+  "description": "A frontend assignment workflow kit for Toss Place style take-home assignments. It helps with requirement analysis, stack selection, Next.js RSC architecture, Simple FSD structure, API layer design, re-render-aware component boundaries, reliability review, and final submission polish.",
+  "author": {
+    "name": "Manwook Han"
+  },
+  "license": "MIT",
+  "keywords": [
+    "frontend",
+    "react",
+    "nextjs",
+    "typescript",
+    "rsc",
+    "fsd",
+    "assignment",
+    "code-review",
+    "reliability",
+    "toss-place",
+    "take-home",
+    "architecture"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Toss Place FE Superpowers",
+    "shortDescription": "Frontend take-home workflows for Toss Place style reliability and architecture",
+    "longDescription": "A Codex-first skill pack for frontend take-home assignments, especially Toss Place and offline-commerce-like products. It guides requirement analysis, stack selection, Next.js RSC and caching architecture, Simple FSD structure, API layer design, re-render-aware component boundaries, reliability review, offline edge-case checks, and final submission polish.",
+    "developerName": "Manwook Han",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use this plugin when preparing or executing a frontend take-home assignment, especially for Toss Place or offline-commerce-like products. Start with assignment analysis, then choose the stack, design architecture, plan API and component boundaries, implement carefully, review reliability risks, and polish the final submission."
+    ],
+    "brandColor": "#0064FF",
+    "screenshots": []
+  }
+}

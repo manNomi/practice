@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AppToaster } from "@/shared/ui/AppToaster";
+import { AppToaster } from "@/4_shared/ui/AppToaster";
 import "./globals.css";
 
 export const metadata: Metadata = {

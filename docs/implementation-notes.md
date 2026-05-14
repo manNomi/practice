@@ -11,11 +11,11 @@
 
 ## 아키텍처
 
-- `src/app`: Next.js App Router, layout, route entry.
-- `src/app-pages`: route-level screen composition.
-- `src/widgets`: 현재 날씨 카드, 5일 예보, 도시 선택처럼 의미 있는 화면 섹션.
-- `src/entities/weather`: OpenWeather API 호출과 cache/revalidate 설정만 둔다.
-- `src/shared`: 도시 설정, env, URL config, formatter, mapper, type, 공용 에러 유틸, 공용 UI.
+- `src/app`: 0_App. Next.js App Router 예약 경로라 물리 이름은 유지하고, layout과 route entry만 둔다.
+- `src/1_app-pages`: 1_App-pages. route-level screen composition.
+- `src/2_widgets`: 2_Widgets. 현재 날씨 카드, 5일 예보, 도시 선택처럼 의미 있는 화면 섹션.
+- `src/3_entities/weather`: 3_Entities. OpenWeather API 호출과 cache/revalidate 설정만 둔다.
+- `src/4_shared`: 4_Shared. 도시 설정, env, URL config, formatter, mapper, type, 공용 에러 유틸, 공용 UI.
 - 테스트는 각 책임 영역의 `__tests__` 폴더에 모아 구현 파일 목록과 분리한다.
 - OpenWeather origin/path/query 기본값, 아이콘 URL 생성, 레이아웃 기준값은 shared config 상수와 CSS 변수로 공통화한다.
 

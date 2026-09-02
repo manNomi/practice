@@ -1,0 +1,23 @@
+import type { Metadata } from "next";
+import { AppToaster } from "@/4_shared/ui/AppToaster";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Toss Weather",
+  description: "Current weather and five-day forecasts for selected cities."
+};
+
+export default function RootLayout({
+  children
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ko">
+      <body>
+        {children}
+        <AppToaster />
+      </body>
+    </html>
+  );
+}

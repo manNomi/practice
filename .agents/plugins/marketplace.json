@@ -1,0 +1,20 @@
+{
+  "name": "toss-weather-assignment-marketplace",
+  "interface": {
+    "displayName": "Toss Weather Assignment Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "toss-place-fe-superpowers",
+      "source": {
+        "source": "local",
+        "path": "./plugins/toss-place-fe-superpowers"
+      },
+      "policy": {
+        "installation": "INSTALLED_BY_DEFAULT",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    }
+  ]
+}
